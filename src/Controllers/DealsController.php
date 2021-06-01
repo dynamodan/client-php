@@ -653,7 +653,7 @@ class DealsController extends BaseController
         }
 
         //and invoke the API call request to fetch the response
-        $response = Request::put($_queryUrl, $_headers, Request\Body::Form($_parameters));
+        $response = Request::put($_queryUrl, $_headers, Request\Body::Form($_httpRequest->getParameters($_parameters)));
 
         $_httpResponse = new HttpResponse($response->code, $response->headers, $response->raw_body);
         $_httpContext = new HttpContext($_httpRequest, $_httpResponse);
